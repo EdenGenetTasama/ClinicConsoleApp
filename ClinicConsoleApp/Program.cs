@@ -23,7 +23,8 @@ namespace ClinicConsoleApp
 
             List<Doctor> listOfDoctors = new List<Doctor>();
             MenuFun(listOfDoctors);
-            int counter;
+            //DiaryFunction();
+            //int counter;
 
 
 
@@ -38,6 +39,8 @@ namespace ClinicConsoleApp
             Console.WriteLine("2.Doctor Info");
             Console.WriteLine("3.Add Patient to specific Doctor");
             Console.WriteLine("4.Show all Doctor");
+            Console.WriteLine("5.Patient per Day");
+
             int userInput = int.Parse(Console.ReadLine());
 
             switch (userInput)
@@ -60,6 +63,10 @@ namespace ClinicConsoleApp
 
                 case 4:
                     ShowDoctorInfo("allDoctors");
+                    break;
+
+                case 5:
+                    DiaryFunction();
                     break;
 
                 default:
@@ -134,20 +141,27 @@ namespace ClinicConsoleApp
         {
             int[,] Diary = new int[4, 7];
             Random randomNumber = new Random();
-            int randomNumberUntill10 = randomNumber.Next(1, 10);
             for (int i = 0; i < Diary.GetLength(0); i++)
             {
+
+
                 for (int j = 0; j < Diary.GetLength(1); j++)
                 {
-                    if (j==6)
+                    int randomNumberUntill10 = randomNumber.Next(1, 10);
+                    //Diary[i, j] = g;
+                    if (j == 7)
                     {
                         Diary[i, j] = 0;
                     }
                     else
                     {
-                        Diary[i,j] = randomNumberUntill10;
+                        Diary[i, j] = randomNumberUntill10;
+                        Console.Write($"|{Diary[i, j]}|"); ;
                     }
+                    //Console.Write($"|{Diary[i, j]}|");
+
                 }
+                Console.WriteLine();
             }
         }
 
